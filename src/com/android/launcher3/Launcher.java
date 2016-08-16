@@ -4102,7 +4102,8 @@ public class Launcher extends Activity
         }
         if (mSavedState != null) {
             if (!mWorkspace.hasFocus()) {
-                mWorkspace.getChildAt(mWorkspace.getCurrentPage()).requestFocus();
+                View v = mWorkspace.getChildAt(mWorkspace.getCurrentPage());
+                if (v != null) v.requestFocus();
             }
 
             mSavedState = null;
