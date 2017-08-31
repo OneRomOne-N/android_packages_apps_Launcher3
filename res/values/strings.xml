@@ -160,7 +160,6 @@
     <string name="allow_rotation_desc">When phone is rotated</string>
     <!-- Text explaining that rotation is disabled in Display settings. 'Display' refers to the Display section in system settings [CHAR LIMIT=100] -->
     <string name="allow_rotation_blocked_desc">Current Display setting doesn\'t permit rotation</string>
-    <string name="search_bar_title">Show search bar</string>
     <string name="show_predictive_apps_title">Predictive apps</string>
 
     <!-- Strings for icon pack preference -->

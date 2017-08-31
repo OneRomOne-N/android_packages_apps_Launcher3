@@ -149,7 +149,6 @@ public final class Utilities {
             TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>());
 
     public static final String ALLOW_ROTATION_PREFERENCE_KEY = "pref_allowRotation";
-    public static final String SHOW_SEARCH_BAR_PREFERENCE_KEY = "pref_searchBar";
     public static final String ICON_PACK_PREFERENCE_KEY = "pref_iconPackPackage";
     public static final String PREDICTIVE_APPS_PREFERENCE_KEY = "pref_showPredictiveApps";
 
@@ -209,10 +208,6 @@ public final class Utilities {
         canvas.drawText(text, x, y, countPaint);
 
         return b;
-    }
-
-    public static boolean isShowSearchBar(Context context) {
-        return getPrefs(context).getBoolean(SHOW_SEARCH_BAR_PREFERENCE_KEY, FeatureFlags.QSB_ON_FIRST_SCREEN);
     }
 
     public static boolean isPredictAppsEnabled(Context context) {

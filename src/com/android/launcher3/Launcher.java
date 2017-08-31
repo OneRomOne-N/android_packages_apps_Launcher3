@@ -233,7 +233,6 @@ public class Launcher extends Activity
     @Thunk DragLayer mDragLayer;
     private DragController mDragController;
     private View mQsbContainer;
-    private boolean mShowSearchBar = FeatureFlags.QSB_ON_FIRST_SCREEN;
 
     public View mWeightWatcher;
 
@@ -299,7 +298,6 @@ public class Launcher extends Activity
     private long mAutoAdvanceSentTime;
     private long mAutoAdvanceTimeLeft = -1;
     @Thunk HashMap<View, AppWidgetProviderInfo> mWidgetsToAdvance = new HashMap<>();
-
 
     // Determines how long to wait after a rotation before restoring the screen orientation to
     // match the sensor state.
@@ -494,8 +492,6 @@ public class Launcher extends Activity
         if (!mRotationEnabled) {
             mRotationEnabled = Utilities.isAllowRotationPrefEnabled(getApplicationContext());
         }
-
-        mShowSearchBar = Utilities.isShowSearchBar(getApplicationContext());
 
         if (mLauncherPrefChangeHandler != null) {
             mLauncherPrefChangeHandler = new LauncherPrefChangeHandler();
@@ -3335,7 +3331,6 @@ public class Launcher extends Activity
             getWindow().getDecorView()
                     .sendAccessibilityEvent(AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED);
         }
-        mWorkspace.updateQsbVisibility(mShowSearchBar);
         return changed;
     }
 
@@ -4609,9 +4604,6 @@ public class Launcher extends Activity
             if (Utilities.ALLOW_ROTATION_PREFERENCE_KEY.equals(key)) {
                 mRotationEnabled = Utilities.isAllowRotationPrefEnabled(getApplicationContext());
             }
-            if (Utilities.SHOW_SEARCH_BAR_PREFERENCE_KEY.equals(key)) {
-                mShowSearchBar = Utilities.isShowSearchBar(getApplicationContext());
-            }
             if (Utilities.PREDICTIVE_APPS_PREFERENCE_KEY.equals(key)) {
                 mShowPredictiveApps = Utilities.isPredictAppsEnabled(getApplicationContext());
             }
@@ -4625,7 +4617,6 @@ public class Launcher extends Activity
             if (mRotationEnabled) {
                 setOrientation();
             }
-            mWorkspace.updateQsbVisibility(mShowSearchBar);
             setupPredictiveAppProvider(mShowPredictiveApps);
         }
     }
